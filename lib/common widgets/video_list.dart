@@ -1,33 +1,19 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/logic/video.dart';
-import 'package:youtube_clone/views/utils/constants.dart';
+import 'package:youtube_clone/common%20models/video.dart';
+import 'package:youtube_clone/utils/constants.dart';
 
-class video_list extends StatefulWidget {
-  var videos;
+class VideoListWidget extends StatefulWidget {
+  List<Video> videos = [];
 
-  video_list(videos) {
-    this.videos = json_to_video(json.decode(videos)["items"]);
-  }
 
-  List<Video> json_to_video(data) {
-    var temp = <Video>[];
-    for (var i in data) {
-      var snip = i["snippet"];
-      Video video = Video(i["id"]["videoId"], snip["title"],
-          snip["channelTitle"], snip["thumbnails"]["high"]["url"]);
-      temp.add(video);
-    }
-    return temp;
-  }
+  VideoListWidget([this.videos = const <Video>[]]);
 
   @override
-  State<video_list> createState() => _video_listState();
+  State<VideoListWidget> createState() => _VideoListWidgetState();
 }
 
-class _video_listState extends State<video_list> {
+class _VideoListWidgetState extends State<VideoListWidget> {
   @override
   Widget build(BuildContext context) {
     var videos = widget.videos;
@@ -36,7 +22,7 @@ class _video_listState extends State<video_list> {
         itemBuilder: (context, index) {
           print(videos[index].thumbnail_link);
           return Padding(
-            padding: EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 20),
             child: Wrap(
               children: [
                 Container(
@@ -61,14 +47,14 @@ class _video_listState extends State<video_list> {
                       ),
                       Text(
                           videos[index].title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 16
                         ),
                       ),
                       Text(
                           videos[index].canal,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 10,
                           )
                       )
@@ -78,7 +64,7 @@ class _video_listState extends State<video_list> {
                     print(index);
                   },
                 )),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 )
               ],

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/logic/services/api.dart';
-import 'package:youtube_clone/views/utils/constants.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:youtube_clone/home/home_viewmodel.dart';
+import 'package:youtube_clone/utils/constants.dart';
 
-import '../utils/video_list.dart';
+import '../common widgets/video_list.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,7 +14,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var index_bottom_nav = 0 ;
-  var youtube = api_conection();
+  Home_Viewmodel homeVM = Home_Viewmodel();
+
+  @override
+  void initState() {
+    homeVM.fetchVideos();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,18 +71,10 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: Container(
-        child: FutureBuilder(
-          future: youtube.get_videos(),
-          builder: (context, snapshot){
-            if(snapshot.connectionState == ConnectionState.waiting){
-              return Text('aguardando');
-            }else if(snapshot.connectionState == ConnectionState.done && snapshot.hasData){
-              return video_list(snapshot.data);
-              //
-            }
-            print(snapshot.hasData);
-            return Text('erro');
-          }
+        child: Observer(
+          builder: (_){
+            return VideoListWidget(homeVM.videos);
+          },
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
             index_bottom_nav = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
               label: 'Home',
               icon: Icon(Icons.home),
