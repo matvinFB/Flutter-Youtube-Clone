@@ -3,6 +3,7 @@ import 'package:youtube_clone/home/home.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: Home(),
   ));
 }

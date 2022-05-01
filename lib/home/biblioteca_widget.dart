@@ -385,7 +385,8 @@ class _BibliotecaWidgetState extends State<BibliotecaWidget> {
               ),
             )
           ],
-        )
+        ),
+        SizedBox(height: 23,)
       ],
     );
   }

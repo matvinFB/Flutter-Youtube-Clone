@@ -124,7 +124,8 @@ class _HomeState extends State<Home> {
             switch (index) {
               case 0:
                 {homeVM.fetchVideos(
-                  videoCategoryId: "27"
+                  videoCategoryId: "27",
+                  q: "Studios Ghibli"
                 );}
                 break;
               case 1:
