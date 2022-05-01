@@ -41,6 +41,22 @@ mixin _$Home_Viewmodel on _Home_Viewlmodel, Store {
     });
   }
 
+  late final _$stateAtom =
+      Atom(name: '_Home_Viewlmodel.state', context: context);
+
+  @override
+  EstadosFetch get state {
+    _$stateAtom.reportRead();
+    return super.state;
+  }
+
+  @override
+  set state(EstadosFetch value) {
+    _$stateAtom.reportWrite(value, super.state, () {
+      super.state = value;
+    });
+  }
+
   late final _$fetchVideosAsyncAction =
       AsyncAction('_Home_Viewlmodel.fetchVideos', context: context);
 
@@ -50,13 +66,15 @@ mixin _$Home_Viewmodel on _Home_Viewlmodel, Store {
       String order = "",
       String videoCategoryId = "",
       String q = "",
-      String publishedAfter = ""}) {
+      String publishedAfter = "",
+      String relatedToVideoId = ""}) {
     return _$fetchVideosAsyncAction.run(() => super.fetchVideos(
         channelId: channelId,
         order: order,
         videoCategoryId: videoCategoryId,
         q: q,
-        publishedAfter: publishedAfter));
+        publishedAfter: publishedAfter,
+        relatedToVideoId: relatedToVideoId));
   }
 
   late final _$_Home_ViewlmodelActionController =
@@ -74,10 +92,55 @@ mixin _$Home_Viewmodel on _Home_Viewlmodel, Store {
   }
 
   @override
+  int getIndex() {
+    final _$actionInfo = _$_Home_ViewlmodelActionController.startAction(
+        name: '_Home_Viewlmodel.getIndex');
+    try {
+      return super.getIndex();
+    } finally {
+      _$_Home_ViewlmodelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIndex(int val) {
+    final _$actionInfo = _$_Home_ViewlmodelActionController.startAction(
+        name: '_Home_Viewlmodel.setIndex');
+    try {
+      return super.setIndex(val);
+    } finally {
+      _$_Home_ViewlmodelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  EstadosFetch getState() {
+    final _$actionInfo = _$_Home_ViewlmodelActionController.startAction(
+        name: '_Home_Viewlmodel.getState');
+    try {
+      return super.getState();
+    } finally {
+      _$_Home_ViewlmodelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void _setState(EstadosFetch val) {
+    final _$actionInfo = _$_Home_ViewlmodelActionController.startAction(
+        name: '_Home_Viewlmodel._setState');
+    try {
+      return super._setState(val);
+    } finally {
+      _$_Home_ViewlmodelActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 videos: ${videos},
-index: ${index}
+index: ${index},
+state: ${state}
     ''';
   }
 }

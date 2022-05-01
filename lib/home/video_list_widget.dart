@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/common%20models/video.dart';
 import 'package:youtube_clone/utils/constants.dart';
@@ -18,9 +17,8 @@ class _VideoListWidgetState extends State<VideoListWidget> {
   Widget build(BuildContext context) {
     var videos = widget.videos;
     return ListView.builder(
-        itemCount: widget.videos.length,
+        itemCount: videos.length,
         itemBuilder: (context, index) {
-          print(videos[index].thumbnail_link);
           return Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Wrap(
@@ -61,7 +59,7 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                     ],
                   ),
                   onTap: () {
-                    print(index);
+                    print("$index - https://www.youtube.com/watch?v=${videos[index].id}");
                   },
                 )),
                 const SizedBox(
