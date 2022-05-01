@@ -1,6 +1,6 @@
 # Youtube Clone
 
-Flutter+http.dart+API Youtube 
+Flutter+http.dart+API Youtube+MobX
 
 O projeto se trata de um clone do app do Youtube feito usando Flutter, a biblioteca http.dart e a API Youtube. O objetivo era principalmente aprender a integração do app com uma API além de aprimorar meu conhecimentos na criação de apps com Flutter. O projeto ainda não está concluído, mas já é possível ver a tela incial com alguns videos que foram resgatados. 
 
