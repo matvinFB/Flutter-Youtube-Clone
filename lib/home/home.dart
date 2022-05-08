@@ -8,6 +8,7 @@ import 'biblioteca_widget.dart';
 import 'video_list_widget.dart';
 
 class Home extends StatefulWidget {
+  static const String routeName = '/';
   const Home({Key? key}) : super(key: key);
 
   @override
@@ -21,13 +22,18 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    homeVM.fetchVideos();
+    homeVM.fetchVideos(
+        videoCategoryId: "27",
+        q: "Studios Ghibli"
+    );
     super.initState();
   }
 
   @override
   void didChangeDependencies() {
-    reactionDisposer = reaction((_)=>homeVM.index, (val){index_bottom_nav = homeVM.getIndex();});
+    reactionDisposer = reaction((_)=>homeVM.index, (val){
+      index_bottom_nav = homeVM.getIndex();
+    });
     super.didChangeDependencies();
   }
 

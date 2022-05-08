@@ -1,19 +1,23 @@
 import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants.dart';
 
 class YoutubeApi{
-
-  Future<String> getVideos({
+  Future<dynamic> getVideos({
     String channelId = "",
     String order = "",
     String videoCategoryId = "",
     String q = "",
     String publishedAfter = "",
     String relatedToVideoId = ""}) async{
+
+
+    //SharedPrefs sharedPrefs = SharedPrefs();
+    //var dados = await sharedPrefs.recuperar();
+    //return dados;
 
     //return Completer<String>().future;
 
@@ -43,5 +47,28 @@ class YoutubeApi{
       print(e);
       return "Err";
     }
+  }
+}
+
+class SharedPrefs{
+
+  salvar(dados)async{
+    print("salvando...");
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString ("tarefas", dados.runtimeType == String? dados : "");
+    print("salvo");
+    return;
+  }
+
+  recuperar()async{
+    final prefs = await SharedPreferences.getInstance();
+    var dados = await (prefs.getString("tarefas") ?? "[]");
+    return dados;
+  }
+
+  remover()async{
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove("tarefas");
+    return;
   }
 }

@@ -5,7 +5,6 @@ import 'package:youtube_clone/utils/constants.dart';
 class VideoListWidget extends StatefulWidget {
   List<Video> videos = [];
 
-
   VideoListWidget([this.videos = const <Video>[]]);
 
   @override
@@ -16,7 +15,9 @@ class _VideoListWidgetState extends State<VideoListWidget> {
   @override
   Widget build(BuildContext context) {
     var videos = widget.videos;
+
     return ListView.builder(
+
         itemCount: videos.length,
         itemBuilder: (context, index) {
           return Padding(
@@ -59,7 +60,7 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                     ],
                   ),
                   onTap: () {
-                    print("$index - https://www.youtube.com/watch?v=${videos[index].id}");
+                    Navigator.pushNamed(context, '/Player', arguments: videos[index]);
                   },
                 )),
                 const SizedBox(

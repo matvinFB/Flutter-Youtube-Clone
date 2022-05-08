@@ -9,11 +9,9 @@ _________________
 ## Imagens do App  
 <br>
 
-![Tela inicial clone Youtube](assets/images/README/home.png?raw=true "1")
+![Tela inicial clone Youtube](assets/images/README/home.png "1")     ![Tela inicial clone Youtube](assets/images/README/video_player.png)
 <br><br>
-![Tela inicial clone Youtube](assets/images/README/biblioteca_1.png?raw=true "2")
-<br><br>
-![Tela inicial clone Youtube](assets/images/README/biblioteca_2.png?raw=true "3")
+![Tela inicial clone Youtube](assets/images/README/biblioteca_1.png) ![Tela inicial clone Youtube](assets/images/README/biblioteca_2.png)
 
 Logo pretendo continuar com o projeto e fazer mais algumas adições e correções.
 

@@ -79,8 +79,8 @@ class _BibliotecaWidgetState extends State<BibliotecaWidget> {
                         )
                       ],
                     ),
-                    onTap: (){
-                      print(index);
+                    onTap: () {
+                      Navigator.pushNamed(context, '/Player', arguments: videos[index]);
                     },
                   ),
                 ),
